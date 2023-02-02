@@ -3,7 +3,7 @@
 	url = https://github.com/lvgl/lvgl.git
 [submodule "third_party/ihslib"]
 	path = core
-	url = https://github.com/mariotaku/ihslib.git
+	url = https://github.com/olebeck/ihslib.git
 [submodule "third_party/protobuf-c"]
 	path = third_party/protobuf-c
 	url = https://github.com/protobuf-c/protobuf-c.git
@@ -18,7 +18,7 @@
 	url = https://github.com/arsenm/sanitizers-cmake.git
 [submodule "third_party/ss4s"]
 	path = third_party/ss4s
-	url = https://github.com/mariotaku/ss4s.git
+	url = https://github.com/olebeck/ss4s.git
 [submodule "third_party/opus"]
 	path = third_party/opus
 	url = https://github.com/xiph/opus.git
