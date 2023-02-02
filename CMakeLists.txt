@@ -7,7 +7,7 @@ enable_testing()
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_SOURCE_DIR}/cmake/sanitizers/cmake)
 
 # Use `pkg-config` to link needed libraries.
-find_package(PkgConfig REQUIRED)
+#find_package(PkgConfig REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(Fontconfig REQUIRED)
 
@@ -63,6 +63,10 @@ if (TARGET_WEBOS)
     set(SS4S_MODULE_DISABLE_MMAL ON)
 endif ()
 
+if (WINRT)
+    add_compile_definitions(_POSIX)
+endif ()
+
 add_subdirectory(core)
 
 add_subdirectory(third_party/lvgl EXCLUDE_FROM_ALL)
@@ -86,6 +90,10 @@ set(CMAKE_C_STANDARD 11)
 
 add_subdirectory(app)
 target_include_directories(ihsplay PRIVATE app)
+
+if(WINRT)
+    target_link_libraries(ihslib PRIVATE ssp)
+endif()
 
 target_link_libraries(ihsplay PRIVATE lvgl ihslib ihslib-hid-sdl ss4s inih)
 target_link_libraries(ihsplay PRIVATE lv_gridview)

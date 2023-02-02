@@ -1,0 +1,65 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}"
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "x64",
+            "hidden": true,
+            "architecture": {
+                "strategy": "set",
+                "value": "x64"
+            }
+        },
+        {
+            "name": "armv7",
+            "hidden": true
+        },
+        {
+            "name": "host-debug",
+            "displayName": "Host-Debug",
+            "inherits": ["base", "debug"]
+        },
+
+        {
+            "name": "winrt",
+            "hidden": true,
+            "toolchainFile": "armv7-w64-mingw32.toolchain.cmake",
+            "cacheVariables": {
+                "MBEDTLS_FATAL_WARNINGS": false
+            },
+            "inherits": ["base", "armv7"]
+        },
+        {
+            "name": "winrt-debug",
+            "displayName": "Windows-RT-Debug",
+            "inherits": ["winrt", "debug"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ihsplay",
+            "displayName": "IHSPlay",
+            "jobs": 0,
+            "targets": ["ihsplay"]
+        }
+    ]
+}

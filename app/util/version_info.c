@@ -33,6 +33,18 @@ bool version_info_valid(const version_info_t *version) {
     return version->major >= 0;
 }
 
+#if defined(WIN32)
+char *strndup(const char *s, size_t n)
+{
+	size_t l = strnlen(s, n);
+	char *d = malloc(l+1);
+	if (!d) return NULL;
+	memcpy(d, s, l);
+	d[l] = 0;
+	return d;
+}
+#endif
+
 char *version_info_str(version_info_t *version) {
     if (version->major < 0) {
         return NULL;
