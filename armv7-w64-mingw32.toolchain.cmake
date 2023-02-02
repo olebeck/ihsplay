@@ -26,4 +26,6 @@ set( CMAKE_FIND_ROOT_PATH "${MXE}/usr/bin" "${MXE}/${TRIPLET}" "${CMAKE_INSTALL_
 set( CMAKE_INSTALL_PREFIX "${MXE}/usr/${TRIPLET}" CACHE PATH "default install path" )
 set( PKG_CONFIG_EXECUTABLE "${MXE}/usr/bin/${TRIPLET}-pkg-config" )
 
+add_compile_definitions(WINRT)
+
 set(WINRT True)
