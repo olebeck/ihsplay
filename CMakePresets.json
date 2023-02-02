@@ -43,7 +43,7 @@
         {
             "name": "winrt",
             "hidden": true,
-            "toolchainFile": "armv7-w64-mingw32.toolchain.cmake",
+            "toolchainFile": "cmake/armv7-w64-mingw32.toolchain.cmake",
             "cacheVariables": {
                 "MBEDTLS_FATAL_WARNINGS": false
             },

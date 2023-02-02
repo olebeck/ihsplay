@@ -4,12 +4,12 @@ if( CMAKE_TOOLCHAIN_FILE )
   # touch toolchain variable to suppress "unused variable" warning
 endif()
 
-set( CMAKE_SYSTEM_NAME Windows )
-
 set(MXE "~/mxe-SHARED" CACHE PATH "mxe-SHARED")
 set(TRIPLET armv7-w64-mingw32)
 
+set( CMAKE_SYSTEM_NAME Windows )
 set( CMAKE_SYSTEM_PROCESSOR "armv7" )
+
 set( CMAKE_C_COMPILER   "${MXE}/usr/bin/${TRIPLET}-clang"     CACHE PATH "C compiler" )
 set( CMAKE_CXX_COMPILER "${MXE}/usr/bin/${TRIPLET}-clang++"     CACHE PATH "C++ compiler" )
 set( CMAKE_ASM_COMPILER "${MXE}/usr/bin/${TRIPLET}-clang"     CACHE PATH "assembler" )
@@ -26,7 +26,7 @@ set( CMAKE_FIND_ROOT_PATH "${MXE}/usr/bin" "${MXE}/${TRIPLET}" "${MXE}/usr/${TRI
 set( CMAKE_INSTALL_PREFIX "${MXE}/usr/${TRIPLET}" CACHE PATH "default install path" )
 set( PKG_CONFIG_EXECUTABLE "${MXE}/usr/bin/${TRIPLET}-pkg-config" )
 
-add_compile_definitions(WINRT)
+add_compile_definitions(WINRT WIN32)
 
 set(WINRT True)
 set(WIN32 True)
