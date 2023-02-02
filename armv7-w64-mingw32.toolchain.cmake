@@ -22,10 +22,11 @@ set( CMAKE_OBJDUMP      "${MXE}/usr/bin/${TRIPLET}-objdump" CACHE PATH "objdump"
 set( CMAKE_RANLIB       "${MXE}/usr/bin/${TRIPLET}-ranlib"  CACHE PATH "ranlib" )
 
 # where is the target environment
-set( CMAKE_FIND_ROOT_PATH "${MXE}/usr/bin" "${MXE}/${TRIPLET}" "${CMAKE_INSTALL_PREFIX}" "${CMAKE_INSTALL_PREFIX}/share" )
+set( CMAKE_FIND_ROOT_PATH "${MXE}/usr/bin" "${MXE}/${TRIPLET}" "${MXE}/usr/${TRIPLET}" "$${MXE}/usr/${TRIPLET}/share" )
 set( CMAKE_INSTALL_PREFIX "${MXE}/usr/${TRIPLET}" CACHE PATH "default install path" )
 set( PKG_CONFIG_EXECUTABLE "${MXE}/usr/bin/${TRIPLET}-pkg-config" )
 
 add_compile_definitions(WINRT)
 
 set(WINRT True)
+set(WIN32 True)

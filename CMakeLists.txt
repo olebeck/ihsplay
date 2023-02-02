@@ -7,7 +7,7 @@ enable_testing()
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_SOURCE_DIR}/cmake/sanitizers/cmake)
 
 # Use `pkg-config` to link needed libraries.
-#find_package(PkgConfig REQUIRED)
+find_package(PkgConfig REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(Fontconfig REQUIRED)
 
@@ -119,7 +119,7 @@ if (TARGET_WEBOS)
 else ()
     # TODO: remove for packaged builds
     set(SS4S_MODULES_INI_PATH_RUNTIME ${SS4S_MODULES_INI_OUTPUT_FILE})
-    set(CMAKE_INSTALL_PREFIX /usr)
+    set(CMAKE_INSTALL_PREFIX /usr CACHE PATH "Install Prefix")
     include(GNUInstallDirs)
 endif ()
 
@@ -137,3 +137,10 @@ configure_file(app/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 target_include_directories(ihsplay PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(tests)
+
+
+install(TARGETS ihsplay RUNTIME)
+if(WINRT)
+    install(FILES ${MXE}/usr/${TRIPLET}/bin/SDL2.dll DESTINATION bin)
+    install(FILES ${MXE}/usr/${TRIPLET}/bin/SDL2_net.dll DESTINATION bin)
+endif()
